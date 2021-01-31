@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="pokemon-input">
+    {% import "bootstrap/wtf.html" as wtf %}
+    {{ wtf.quick_form(form) }}
+    {% if not pokemon %}
+        <span style="color:red;"> This pokemon does not exist in Generation 8!</span>
+    {% endif %}
+    </div>
+    {% if pokemon %}
+        <div class="pokemon-info">
+            <h2>You have chosen {{pokemon.name.title() }}!</h2>
+            <img class="pokemon-image" src={{ pokemon.image_url }} alt={{ pokemon.name }}  Sprite Image }}>
+            {% if pokemon.types |length  == 1 %}
+            <h4>Type: {{ pokemon.types[0].get("name").upper() }}</h4>
+            {% else %}
+                {% for pkmn_type in pokemon.types %}
+                    <h4>Type{{ loop.index }}: {{pkmn_type.get("name").upper() }}</h4>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="pokemon-stats">
+            <h3>Base Stats</h3>
+            <table class="stats-table">
+                {% for stat in pokemon.stats %}
+                    <tr>
+                        <td class="stats-td">{{ stat.get("name").title() }}</td>
+                        <td class="stats-td">{{ stat.get("base_stat") }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="pokemon-abilities">
+            <h3>Available Abilities</h3>
+            <table class="pokemon-abilities">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                {% for ability in pokemon.abilities %}
+                    <tr>
+                        <td class="ability-name">{{ ability.get("name").title() }}</td>
+                        <td class="ability-description">{{ ability.get("description") }}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="pokemon-resistances">
+            <h3>Type Resistances</h3>
+            <table class="pokemon-resistances">
+                <tr>
+                    <th>Type</th>
+                    <th>Damage From Type</th>
+                </tr>
+                {% for type in pokemon.damage_per_type2 %}
+                    <tr>
+                        <td class="type">{{ type.title() }}</td>
+                        {% if pokemon.damage_per_type2.get(type) == 0 %}
+                            <td class="weak-against">Immune</td>
+                        {% elif pokemon.damage_per_type2.get(type) == 1.0 %}
+                            <td class="neutral-against">x{{ 1.0|int }}</td>
+                        {% else %}
+                            {% if (pokemon.damage_per_type2.get(type) == 0.5) or (pokemon.damage_per_type2.get(type) == 0.25) %}
+                                <td class="weak-against">x{{ pokemon.damage_per_type2.get(type) }}</td>
+                            {% else %}
+                                <td class="strong-against">x{{ pokemon.damage_per_type2.get(type) }}</td>
+                            {% endif %}
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('get_blog') }}">Go to Blog Page </a>
+{% endblock body %}
+</body>
+<footer>
+    <p>Copyright {{ footer_year }}. Built by Stefanos Dragoutsis at Selene Development.</p>
+</footer>
+</html>

@@ -1,0 +1,175 @@
+.nav-container{
+    padding:30px;
+    background-size: auto;
+    background-color:#aa3a3a;
+    /*border: 3px solid black;*/
+
+}
+
+body{
+    margin: 0px;
+    font-family: "courier", verdana, sans-serif;
+    background-color:#f8e4b7;
+
+}
+
+h3{
+    padding:20px;
+}
+
+a.nav-link:hover{color:#a4b787;}
+a.nav-link{
+    display:inline-block
+    padding-left:30px;
+    padding-right:30px;
+    color:#f4f4f4;
+}
+
+a.login:hover{color:#a4b787;}
+a.login{
+    display:inline-block
+    padding-left:20px;
+    padding-right:20px;
+    position: absolute;
+    right:150px;
+    color:#f4f4f4;
+}
+
+
+a.register:hover{color:#a4b787;}
+a.register{
+    display:inline-block
+    padding-left:20px;
+    padding-right:20px;
+    position: absolute;
+    right:30px;
+    color:#f4f4f4;
+}
+
+td, th{
+    border: 1px solid black;
+}
+
+
+table td.ability-description{
+    padding:15px;
+    width: 500px;
+    text-align:left;
+    line-height: 1.6;
+    word-wrap:break-word;
+}
+
+
+td.ability-name{
+    padding:15px;
+    width:172px;
+    text-align:center;
+    word-wrap:break-word;
+}
+/*
+.td.ability-description{
+    padding:15px;
+    width:200px;
+    text-align:center;
+    word-wrap:break-word;
+
+}
+*/
+
+td.stats-td{
+    padding:10px;
+    width: 200px;
+    text-align:center;
+    word-wrap:break-word;
+}
+
+.top-container{
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-left: 20 px;
+
+}
+
+.pokemon-input{
+    margin: auto;
+    padding: 20px;
+    /*border: 3px solid green;*/
+    text-align: center;
+
+}
+
+.pokemon-info{
+    padding: 20px;
+    /*border: 3px solid purple;*/
+    text-align: center;
+}
+
+
+
+.pokemon-stats{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    /*border: 3px solid black;*/
+
+}
+
+.pokemon-abilities{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+   /* border: 3px solid black;*/
+
+}
+
+.pokemon-resistances{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    /*border: 3px solid black;*/
+}
+
+.pokemon-image{
+    display: block;
+    margin: auto;
+
+}
+
+.stats-table{
+    margin: auto;
+
+}
+
+.abilities-table{
+    margin: auto;
+}
+
+.resistances-table{
+    margin: auto;
+}
+
+.register-form{
+    padding:20px;
+}
+
+
+td.weak-against{
+    color: #007965;
+    width: 200px;
+}
+
+td.strong-against{
+    color: #ec4646;
+    width: 200px;
+}
+
+td.neutral-against{
+    color: #f58634;
+    width: 200px;
+}
+
+td.type{
+    text-align:center;
+    width:200px;
+}

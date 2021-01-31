@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% for post in posts: %}
+    <h1>{{ post.get("title") }}</h1>
+    <h2>{{ post.get("subtitle") }}</h2>
+    {% endfor %}
+{% endblock body %}

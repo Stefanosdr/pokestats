@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>PokeStats-{{ title }}</title>
+    {% else %}
+        <title>PokeStats</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="nav-container">
+            <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+            <a class="nav-link" href="{{ url_for('team_evaluation') }}">Team Evaluation</a>
+            <a class="nav-link" href="{{ url_for('index') }}">Pokemon Tiers</a>
+            <a class="nav-link" href="{{ url_for('index') }}">Builds</a>
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            <a class="register" href="{{ url_for('register') }}">Register</a>
+            <a class="login" href="{{ url_for('login') }}">Login</a>
+    </div>
+    {% block body %}
+    {% endblock body %}
+</body>
+</html>
