@@ -18,13 +18,13 @@ class Pokemon:
         self.get_types()
         self.get_pkmn_image_url()
         self.get_resistances_easier()
-        self.get_num_resistances()
         self.num_neutral_res = 0
         self.num_half_damage_res = 0
         self.num_one_fourth_damage_res = 0
         self.num_immune = 0
         self.num_double_damage_res = 0
         self.num_quadraple_damage_res = 0
+        self.get_num_resistances()
 
 
         #self.get_no_damage_from()
