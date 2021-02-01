@@ -1,4 +1,73 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h1>Team Evaluation Page</h1>
+    {% import "bootstrap/wtf.html" as wtf %}
+
+    <h1>Team Type Coverage Evaluation</h1>
+
+    <div class="team-form">
+        <h3>Pokemon Team</h3>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.pokemon1.label }}<br>
+                {{ form.pokemon1() }}
+                {% for error in form.pokemon1.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pokemon2.label }}<br>
+                {{ form.pokemon2() }}
+                {% for error in form.pokemon2.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pokemon3.label }}<br>
+                {{ form.pokemon3() }}
+                {% for error in form.pokemon3.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pokemon4.label }}<br>
+                {{ form.pokemon4() }}
+                {% for error in form.pokemon4.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pokemon5.label }}<br>
+                {{ form.pokemon5() }}
+                {% for error in form.pokemon5.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.pokemon6.label }}<br>
+                {{ form.pokemon6() }}
+                {% for error in form.pokemon6.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+    {% if pokemon_data %}
+        <div class="team-review">
+            <h4>Team Review for {{ (',').join(pokemon_list) }}</h4>
+            <h5>Available Triads</h5>
+            {% for triad in pokemon_data %}
+                <div class="pokemon-triad">
+                {% for pokemon in triad.pokemon_triad %}
+                    <p class="pokemon-in-triad">{{ pokemon.name.title() }}</p>
+                {% endfor %}
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+    <!--{{ wtf.quick_form(form) }} -->
+
 {% endblock body %}

@@ -13,9 +13,7 @@ body{
 
 }
 
-h3{
-    padding:20px;
-}
+
 
 a.nav-link:hover{color:#a4b787;}
 a.nav-link{
@@ -172,4 +170,25 @@ td.neutral-against{
 td.type{
     text-align:center;
     width:200px;
+}
+
+.team-form{
+    border: 3px solid black;
+    width: 30%;
+    height: 400px;
+    padding: 20px;
+    float: left;
+}
+
+.team-review{
+    border: 3px solid red;
+    width: 65%;
+    padding: 20px;
+    float: left;
+}
+
+.pokemon-in-triad{
+    display: inline-block;
+    font-size:12px;
+    margin: 0;
 }

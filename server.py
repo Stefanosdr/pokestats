@@ -9,7 +9,8 @@ from wtforms.validators import DataRequired
 from flask_bootstrap import Bootstrap
 import requests
 from pokemon_class import Pokemon
-from forms import ResisterForm
+from forms import ResisterForm, PokemonTeamForm
+from pokemon_team_manager import get_pokemon_triads
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -72,9 +73,25 @@ def get_blog():
     return render_template("blog.html", posts=all_posts)
 
 
-@app.route("/team_evaluation")
+@app.route("/team_evaluation", methods=["GET", "POST"])
 def team_evaluation():
-    return render_template("team_evaluation.html")
+    team_evaluation_form = PokemonTeamForm()
+    pokemon_data = None
+    pokemon_list = None
+    if team_evaluation_form.validate_on_submit():
+        pokemon_list = [
+            team_evaluation_form.pokemon1.data,
+            team_evaluation_form.pokemon2.data,
+            team_evaluation_form.pokemon3.data,
+            team_evaluation_form.pokemon4.data,
+            team_evaluation_form.pokemon5.data,
+            team_evaluation_form.pokemon6.data
+        ]
+        return render_template("team_evaluation.html", form=team_evaluation_form, pokemon_list=pokemon_list,
+                               pokemon_data=get_pokemon_triads(pokemon_list))
+
+    return render_template("team_evaluation.html", form=team_evaluation_form, pokemon_list=pokemon_list,
+                           pokemon_data=pokemon_data)
 
 
 @app.route("/about")
