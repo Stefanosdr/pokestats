@@ -17,12 +17,21 @@ class Pokemon:
         self.get_egg_groups()
         self.get_types()
         self.get_pkmn_image_url()
+        self.get_resistances_easier()
+        self.get_num_resistances()
+        self.num_neutral_res = 0
+        self.num_half_damage_res = 0
+        self.num_one_fourth_damage_res = 0
+        self.num_immune = 0
+        self.num_double_damage_res = 0
+        self.num_quadraple_damage_res = 0
+
 
         #self.get_no_damage_from()
         #self.get_half_damage_from()
         self.get_abilities()
         #self.show_resistances()
-        self.get_resistances_easier()
+
 
     def get_abilities(self):
         self.abilities = []
@@ -97,6 +106,22 @@ class Pokemon:
             for key, value in damage_categories.items():
                 if pokemon_type in value.get("list_of_types"):
                     self.damage_per_type2[pokemon_type] *= value.get("multiplier")
+
+
+    def get_num_resistances(self):
+        for pkmn_type in self.damage_per_type2:
+            if self.damage_per_type2.get(pkmn_type) == 0:
+                self.num_immune += 1
+            elif self.damage_per_type2.get(pkmn_type) == 1:
+                self.num_neutral_res += 1
+            elif self.damage_per_type2.get(pkmn_type) == 2:
+                self.num_double_damage_res += 1
+            elif self.damage_per_type2.get(pkmn_type) == 4:
+                self.num_quadraple_damage_res += 1
+            elif self.damage_per_type2.get(pkmn_type) == 0.25:
+                self.num_one_fourth_damage_res += 1
+            else:
+                self.num_half_damage_res += 1
 
 
 
